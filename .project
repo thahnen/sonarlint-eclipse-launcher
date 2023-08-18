@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>sonarlint-eclipse-launcher</name>
+	<comment></comment>
+	<projects>
+		<project>org.sonarlint.eclipse.cdt</project>
+		<project>org.sonarlint.eclipse.core</project>
+		<project>org.sonarlint.eclipse.core.tests</project>
+		<project>org.sonarlint.eclipse.feature</project>
+		<project>org.sonarlint.eclipse.its</project>
+		<project>org.sonarlint.eclipse.jdt</project>
+		<project>org.sonarlint.eclipse.m2e</project>
+		<project>org.sonarlint.eclipse.site</project>
+		<project>org.sonarlint.eclipse.ui</project>
+		<project>sonarlint-eclipse-parent</project>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+</projectDescription>
