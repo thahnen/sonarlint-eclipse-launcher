@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sonarlint-core-osgi" default="maven.fix" xmlns:if="ant:if" xmlns:unless="ant:unless">
+	<description>
+		This will fix the Maven artifact for consumption in a Eclipse target platform:
+		_remote.properties
+	</description>
+	
+	<!-- basic properties (inside and outside project directory) -->
+	<dirname property="current.dir" file="${ant.file}" />
+	<property name="tmp.file" value ="${current.dir}/tmp.file" />
+	<property name="commons.target"
+			  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons.target" />
+	<property name="maven.repository"
+			  value="/Users/${user.name}/.m2/repository/org/sonarsource/sonarlint/core/sonarlint-core-osgi" />
+	
+	
+	<!-- main target -->
+	<target name="maven.fix">
+		<!-- 1) Check if target-platforms/commons.target exists -->
+		<fail message="Eclipse target platform is missing at '${commons.target}'!">
+			<condition>
+				<not>
+					<available file="${commons.target}" />
+				</not>
+			</condition>
+		</fail>
+		
+		<!-- 2) Check if Maven repository exists -->
+		<fail message="Maven repository data is missing at '${maven.repository}'!">
+			<condition>
+				<not>
+					<available file="${maven.repository}" type="dir" />
+				</not>
+			</condition>
+		</fail>
+		
+		<!-- 3) Create temporary copy of Eclipse target platform -->
+		<loadfile property="commons.target.content"
+				  srcfile="${commons.target}">
+			<filterchain>
+				<striplinebreaks />
+			</filterchain>
+		</loadfile>
+		
+		<!-- 4) Remove prefix from file -->
+		<echo message="${commons.target.content}" file="tmp.file" />
+		<loadfile property="prefix"
+				  srcfile="${tmp.file}">
+			<filterchain>
+				<tokenfilter>
+					<replaceregex pattern="^.*sonarlint-core-osgi.{2}artifactId>\s*.{1}version>"
+								  replace=""
+								  flags="g" />
+				</tokenfilter>
+			</filterchain>
+		</loadfile>
+		
+		<!-- 5) Remove suffix from file -->
+		<echo message="${prefix}" file="tmp.file" />
+		<loadfile property="sonarlint-core-osgi.version"
+						  srcfile="${tmp.file}">
+			<filterchain>
+				<tokenfilter>
+					<replaceregex pattern=".{2}version>.*$"
+								  replace=""
+								  flags="g" />
+				</tokenfilter>
+			</filterchain>
+		</loadfile>
+		<echo message="SLCORE version: ${sonarlint-core-osgi.version}" />
+		
+		<!-- 6) Delete temporary copy of Eclipse target platform -->
+		<delete file="${tmp.file}" />
+		
+		<!-- 7) Check if artifact repository information exists -->
+		<property name="_remote.repositories"
+				  value="${maven.repository}/${sonarlint-core-osgi.version}/_remote.repositories" />
+		
+		<fail message="Maven artifact repository information is missing at '${_remote.repositories}'!">
+			<condition>
+				<not>
+					<available file="${_remote.repositories}" />
+				</not>
+			</condition>
+		</fail>
+		
+		<!-- 8) Delete artifact repository information -->
+		<delete file="${_remote.repositories}" />
+	</target>
+</project>
