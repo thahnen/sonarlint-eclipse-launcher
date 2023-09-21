@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sonarlint-test-classpath" default="classpath.fix" xmlns:if="ant:if" xmlns:unless="ant:unless">
+	<description>
+		This will fix the generated classpath files of the two test projects (m2e issue workaround)
+	</description>
+	
+	<!-- basic properties (inside and outside project directory) -->
+	<dirname property="current.dir" file="${ant.file}" />
+	<property name="org.sonarlint.eclipse.core.tests.classpath"
+			  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/org.sonarlint.eclipse.core.tests/.classpath" />
+	<property name="org.sonarlint.eclipse.its.classpath"
+				  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/its/.classpath" />
+	<property name="attribute.test" value="&lt;attribute name=&quot;test&quot; value=&quot;true&quot;/&gt;"/>
+	<property name="attribute.optional" value="&lt;attribute name=&quot;optional&quot; value=&quot;true&quot;/&gt;"/>
+	<property name="attribute.combined" value="${attribute.test}${attribute.optional}"/>
+
+	
+	
+	<!-- main target -->
+	<target name="classpath.fix">
+		<!-- 1) Check if classpath files exists -->
+		<fail message="Eclipse classpath files is missing at '${org.sonarlint.eclipse.core.tests.classpath}'!">
+			<condition>
+				<not>
+					<available file="${org.sonarlint.eclipse.core.tests.classpath}" />
+				</not>
+			</condition>
+		</fail>
+		
+		<fail message="Eclipse classpath files is missing at '${org.sonarlint.eclipse.its.classpath}'!">
+			<condition>
+				<not>
+					<available file="${org.sonarlint.eclipse.its.classpath}" />
+				</not>
+			</condition>
+		</fail>
+		
+		<!-- 2) Read classpath files and check if attribute already exists -->
+		<loadfile property="org.sonarlint.eclipse.core.tests.classpath.content"
+				  srcfile="${org.sonarlint.eclipse.core.tests.classpath}" />
+		<loadfile property="org.sonarlint.eclipse.its.classpath.content"
+				  srcfile="${org.sonarlint.eclipse.its.classpath}" />
+		
+		<fail message="Test attribute already set in '${org.sonarlint.eclipse.core.tests.classpath}'!">
+			<condition>
+				<contains string="${org.sonarlint.eclipse.core.tests.classpath.content}"
+						  substring="${attribute.test}" />
+			</condition>
+		</fail>
+		
+		<fail message="Test attribute already set in '${org.sonarlint.eclipse.its.classpath}'!">
+			<condition>
+				<contains string="${org.sonarlint.eclipse.its.classpath.content}"
+						  substring="${attribute.test}" />
+			</condition>
+		</fail>
+		
+		<!-- 3) Replace classpath with test attribute -->
+		<loadresource property="org.sonarlint.eclipse.core.tests.classpath.final">
+			<propertyresource name="org.sonarlint.eclipse.core.tests.classpath.content"/>
+			<filterchain>
+				<tokenfilter>
+					<filetokenizer />
+					<replacestring from="${attribute.optional}" to="${attribute.combined}" />
+				</tokenfilter>
+			</filterchain>
+		</loadresource>
+		
+		<loadresource property="org.sonarlint.eclipse.its.classpath.final">
+			<propertyresource name="org.sonarlint.eclipse.its.classpath.content"/>
+			<filterchain>
+				<tokenfilter>
+					<filetokenizer />
+					<replacestring from="${attribute.optional}" to="${attribute.combined}" />
+				</tokenfilter>
+			</filterchain>
+		</loadresource>
+		
+		<!-- 4) Save fixed classpath files -->
+		<echo message="${org.sonarlint.eclipse.core.tests.classpath.final}"
+			  file="${org.sonarlint.eclipse.core.tests.classpath}" />
+		<echo message="${org.sonarlint.eclipse.its.classpath.final}"
+			  file="${org.sonarlint.eclipse.its.classpath}" />
+		
+		<!-- 5) Refresh Eclipse projects (sonarlint-eclipse-parent / sonarlint-eclipse-launcher) -->
+		<eclipse.refreshLocal resource="sonarlint-eclipse-parent" depth="infinite" />
+		<eclipse.refreshLocal resource="sonarlint-eclipse-launcher" depth="infinite" />
+	</target>
+</project>
