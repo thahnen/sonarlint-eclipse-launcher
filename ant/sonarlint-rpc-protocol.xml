@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="sonarlint-core-osgi" default="maven.fix" xmlns:if="ant:if" xmlns:unless="ant:unless">
+<project name="sonarlint-rpc-protocol" default="maven.fix" xmlns:if="ant:if" xmlns:unless="ant:unless">
 	<description>
 		This will fix the Maven artifact for consumption in a Eclipse target platform:
 		_remote.properties
@@ -11,7 +11,7 @@
 	<property name="commons.target"
 			  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons.target" />
 	<property name="maven.repository"
-		  	  value="/Users/${user.name}/.m2/repository/org/sonarsource/sonarlint/core/sonarlint-core-osgi" />
+		  	  value="/Users/${user.name}/.m2/repository/org/sonarsource/sonarlint/core/sonarlint-rpc-protocol" />
 	
 	
 	<!-- main target -->
@@ -47,14 +47,14 @@
 			<propertyresource name="commons.target.content"/>
 			<filterchain>
 				<tokenfilter>
-					<replaceregex pattern="^.*sonarlint-core-osgi.{2}artifactId>\s*.{1}version>"
+					<replaceregex pattern="^.*sonarlint-rpc-protocol.{2}artifactId>\s*.{1}version>"
 								  replace=""
 								  flags="g" />
 				</tokenfilter>
 			</filterchain>
 		</loadresource>
 		
-		<loadresource property="sonarlint-core-osgi.version">
+		<loadresource property="sonarlint-rpc-protocol.version">
 			<propertyresource name="commons.target.content.intermediate"/>
 			<filterchain>
 				<tokenfilter>
@@ -66,19 +66,19 @@
 		</loadresource>
 		
 		<!-- 5) Check that loaded version is actually a valid version -->
-		<fail message="Version from commons.target is incorrect: ${sonarlint-core-osgi.version}">
+		<fail message="Version from commons.target is incorrect: ${sonarlint-rpc-protocol.version}">
 			<condition>
 				<not>
-					<matches string="${sonarlint-core-osgi.version}"
+					<matches string="${sonarlint-rpc-protocol.version}"
 					         pattern="^(\d+[.]){1,3}\d+$" />
 				</not>
 			</condition>
 		</fail>
-		<echo message="SLCORE (OSGi bundle) version: ${sonarlint-core-osgi.version}" />
+		<echo message="SLCORE (RPC protocol) version: ${sonarlint-rpc-protocol.version}" />
 		
 		<!-- 6) Check if artifact repository information exists -->
 		<property name="_remote.repositories"
-				  value="${maven.repository}/${sonarlint-core-osgi.version}/_remote.repositories" />
+				  value="${maven.repository}/${sonarlint-rpc-protocol.version}/_remote.repositories" />
 		
 		<fail message="Maven artifact repository information is missing at '${_remote.repositories}'!">
 			<condition>
