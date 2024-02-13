@@ -26,5 +26,6 @@ set correctly:
 There are still some things left to do:
 
 - unify the Ant scripts for the target platform definition with one single library
+- add Ant script for checking consistency in SLCORE versions between *pom.xml* / *commons.target*
 - add Ant script for testing [THIS](https://xtranet-sonarsource.atlassian.net/wiki/spaces/SL/pages/2875162997/HOWTO+Update+SLCORE+in+SLE)
 - add Ant script for checking protobuf version consistency between SLE / SLCORE
