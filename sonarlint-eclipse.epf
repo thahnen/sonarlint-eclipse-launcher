@@ -1,0 +1,33 @@
+\!/=
+
+# (Workspace) SonarQube Next instance
+/instance/org.sonarlint.eclipse.core/servers/next.sonarqube.com/auth=true
+/instance/org.sonarlint.eclipse.core/servers/next.sonarqube.com/url=https\://next.sonarqube.com
+
+# (Workspace) SonarCloud SonarSource organization
+/instance/org.sonarlint.eclipse.core/servers/SonarCloud%2Fsonarsource/auth=true
+/instance/org.sonarlint.eclipse.core/servers/SonarCloud%2Fsonarsource/org=sonarsource
+/instance/org.sonarlint.eclipse.core/servers/SonarCloud%2Fsonarsource/url=https\://sonarcloud.io
+
+# (Workspace) Focus on New Code
+/instance/org.sonarlint.eclipse.ui/issueFilter=nonResolved
+/instance/org.sonarlint.eclipse.ui/issuePeriod=newCode
+
+# (Workspace) Node.js linked to Homebrew installation
+/instance/org.sonarlint.eclipse.ui/nodeJsPath=/opt/homebrew/opt/node@18/bin/node
+
+# (Workspace) SonarLint Console configuration
+/instance/org.sonarlint.eclipse.ui/debugOutput=true
+/instance/org.sonarlint.eclipse.ui/showAnalyzerOutput=true
+
+# (Workspace) Skip notifications
+/instance/org.sonarlint.eclipse.ui/taintVulnerabilityDisplayed=true
+/instance/org.sonarlint.eclipse.ui/secretsEverDetected=true
+/instance/org.sonarlint.eclipse.ui/noAutomaticBuildWarning=true
+/instance/org.sonarlint.eclipse.ui/ignoreNotificationsAboutMissingFeatures=true
+/instance/org.sonarlint.eclipse.ui/ignoreNotificationsAboutEnhancedFeatures=true
+
+# (IDE Global) Skip notifications
+/configuration/org.sonarlint.eclipse.ui/skipConfirmAnalyzeMultipleFiles=true
+
+file_export_version=3.0
