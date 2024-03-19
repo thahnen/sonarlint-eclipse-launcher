@@ -35,7 +35,7 @@ A local cask can be installed via
   [General Availability](https://en.wikipedia.org/wiki/Software_release_life_cycle#General_availability_(GA))
 - *IDz1602.rb* for IBM IDz 16.0.2 (06.2023)
 - *IDz1603.rb* for IBM IDz 16.0.3 (10.2023)
-- *IDz1603.rb* for IBM IDz 16.0.4 (03.2024), the latest Java 11 based
+- *IDz1604.rb* for IBM IDz 16.0.4 (03.2024), the latest Java 11 based
   [General Availability](https://en.wikipedia.org/wiki/Software_release_life_cycle#General_availability_(GA)) that
   should be sufficient when testing
 
@@ -53,3 +53,4 @@ There are still some things left to do:
 - add Ant script for checking consistency in SLCORE versions between *pom.xml* / *commons.target*
 - add Ant script for testing [THIS](https://xtranet-sonarsource.atlassian.net/wiki/spaces/SL/pages/2875162997/HOWTO+Update+SLCORE+in+SLE)
 - add Ant script for checking protobuf version consistency between SLE / SLCORE
+- add target platform that can be loaded into Eclipse to run IDz instead of a default Eclipse Application

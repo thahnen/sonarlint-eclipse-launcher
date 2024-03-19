@@ -7,7 +7,6 @@
 	
 	<!-- basic properties (inside and outside project directory) -->
 	<dirname property="current.dir" file="${ant.file}" />
-	<property name="tmp.file" value ="${current.dir}/tmp.file" />
 	<property name="commons.target"
 			  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons.target" />
 	<property name="maven.repository"
