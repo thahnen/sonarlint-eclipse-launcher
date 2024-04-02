@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="sonarlint-eclipse-idz-16.0.3">
+	<locations>
+		<location path="/Applications/IBM IDz 16.0.3.app/Contents/Eclipse" type="Profile"/>
+		<location type="Target" uri="file:${project_loc:/org.sonarlint.eclipse.its}/target-platforms/commons.target"/>
+		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<repository location="https://download.eclipse.org/releases/2022-03/"/>
+			<unit id="org.json" version="0.0.0"/>
+   		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<repository location="https://download.eclipse.org/reddeer/releases/latest/"/>
+			<unit id="org.eclipse.reddeer.eclipse.feature.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.reddeer.ui.feature.feature.group" version="0.0.0"/>
+		</location>
+	</locations>
+	<targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
+	<environment>
+		<os>macosx</os>
+		<ws>cocoa</ws>
+	</environment>
+</target>
