@@ -44,17 +44,6 @@ A local cask can be uninstalled via
 
 **INFO: Currently uninstalling these casks doesn't work correctly as the copied applications are not removed!**
 
-## UTM - Virtual machines
-
-[UTM](https://mac.getutm.app/) is used for virtualization and testing SonarLint for Eclipse on different operating
-systems including investigation of potential issues. Every virtual machine will have a specific folder with scripts
-and other configuration (e.g. *utm-macos-13* for a macOS Ventura virtual machine).
-
-- *startup.sh* must be run after login, used for setting up shared folder and installing certificates
-- *init.sh* must be run after *startup.sh* in order to update the local machine and install missing dependencies
-
-On macOS the scripts will be linked on the Desktop via tiny helper applications starting the shell scripts!
-
 ## TODOs:
 
 There are still some things left to do:

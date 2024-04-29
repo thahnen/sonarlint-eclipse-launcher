@@ -7,14 +7,26 @@
 	
 	<!-- basic properties (inside and outside project directory) -->
 	<dirname property="current.dir" file="${ant.file}" />
-	<property name="commons.target"
+	<property name="commons.target.macOS"
 			  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons.target" />
-	<property name="maven.repository"
+	<property name="commons.target.Linux"
+			  value="/home/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons.target" />
+	<property name="maven.repository.macOS"
 		  	  value="/Users/${user.name}/.m2/repository/org/sonarsource/sonarlint/core/sonarlint-core-osgi" />
+	<property name="maven.repository.Linux"
+			  value="/home/${user.name}/.m2/repository/org/sonarsource/sonarlint/core/sonarlint-core-osgi" />
 	
 	
 	<!-- main target -->
 	<target name="maven.fix">
+		<!-- 0) Set 'commons.target' / 'maven.repository' based on OS -->
+		<condition property="commons.target" value ="${commons.target.Linux}" else ="${commons.target.macOS}">
+			<os family="unix" />
+		</condition>
+		<condition property="maven.repository" value ="${maven.repository.Linux}" else ="${maven.repository.macOS}">
+			<os family="unix" />
+		</condition>
+		
 		<!-- 1) Check if target-platforms/commons.target exists -->
 		<fail message="Eclipse target platform is missing at '${commons.target}'!">
 			<condition>

@@ -6,10 +6,14 @@
 	
 	<!-- basic properties (inside and outside project directory) -->
 	<dirname property="current.dir" file="${ant.file}" />
-	<property name="org.sonarlint.eclipse.core.tests.classpath"
+	<property name="org.sonarlint.eclipse.core.tests.classpath.macOS"
 			  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/org.sonarlint.eclipse.core.tests/.classpath" />
-	<property name="org.sonarlint.eclipse.its.classpath"
-				  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/its/.classpath" />
+	<property name="org.sonarlint.eclipse.core.tests.classpath.Linux"
+			  value="/home/${user.name}/VCS/SonarSource/sonarlint-eclipse/org.sonarlint.eclipse.core.tests/.classpath" />
+	<property name="org.sonarlint.eclipse.its.classpath.macOS"
+			  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/its/.classpath" />
+	<property name="org.sonarlint.eclipse.its.classpath.Linux"
+			  value="/home/${user.name}/VCS/SonarSource/sonarlint-eclipse/its/.classpath" />
 	<property name="attribute.test" value="&lt;attribute name=&quot;test&quot; value=&quot;true&quot;/&gt;"/>
 	<property name="attribute.optional" value="&lt;attribute name=&quot;optional&quot; value=&quot;true&quot;/&gt;"/>
 	<property name="attribute.combined" value="${attribute.test}${attribute.optional}"/>
@@ -18,6 +22,18 @@
 	
 	<!-- main target -->
 	<target name="classpath.fix">
+		<!-- 0) Set 'org.sonarlint.eclipse.core.tests.classpath' / 'org.sonarlint.eclipse.its.classpath' based on OS -->
+		<condition property="org.sonarlint.eclipse.core.tests.classpath"
+				   value ="${org.sonarlint.eclipse.core.tests.classpath.Linux}"
+				   else ="${org.sonarlint.eclipse.core.tests.classpath.macOS}">
+			<os family="unix" />
+		</condition>
+		<condition property="org.sonarlint.eclipse.its.classpath"
+				   value ="${org.sonarlint.eclipse.its.classpath.Linux}"
+				   else ="${org.sonarlint.eclipse.its.classpath.macOS}">
+			<os family="unix" />
+		</condition>
+		
 		<!-- 1) Check if classpath files exists -->
 		<fail message="Eclipse classpath files is missing at '${org.sonarlint.eclipse.core.tests.classpath}'!">
 			<condition>
