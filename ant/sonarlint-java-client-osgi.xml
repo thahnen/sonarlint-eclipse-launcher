@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sonarlint-java-client-osgi" default="maven.fix" xmlns:if="ant:if" xmlns:unless="ant:unless">
+	<description>
+		This will fix the Maven artifact for consumption in a Eclipse target platform:
+		_remote.properties
+	</description>
+	
+	<!-- basic properties (inside and outside project directory) -->
+	<dirname property="current.dir" file="${ant.file}" />
+	<property name="commons.target.macOS"
+			  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons.target" />
+	<property name="commons.target.Linux"
+			  value="/home/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons.target" />
+	<property name="maven.repository.macOS"
+		  	  value="/Users/${user.name}/.m2/repository/org/sonarsource/sonarlint/core/sonarlint-java-client-osgi" />
+	<property name="maven.repository.Linux"
+			  value="/home/${user.name}/.m2/repository/org/sonarsource/sonarlint/core/sonarlint-java-client-osgi" />
+	
+	
+	<!-- main target -->
+	<target name="maven.fix">
+		<!-- 0) Set 'commons.target' / 'maven.repository' based on OS -->
+		<condition property="commons.target" value ="${commons.target.Linux}" else ="${commons.target.macOS}">
+			<os family="unix" />
+		</condition>
+		<condition property="maven.repository" value ="${maven.repository.Linux}" else ="${maven.repository.macOS}">
+			<os family="unix" />
+		</condition>
+		
+		<!-- 1) Check if target-platforms/commons.target exists -->
+		<fail message="Eclipse target platform is missing at '${commons.target}'!">
+			<condition>
+				<not>
+					<available file="${commons.target}" />
+				</not>
+			</condition>
+		</fail>
+		
+		<!-- 2) Check if Maven repository exists -->
+		<fail message="Maven repository data is missing at '${maven.repository}'!">
+			<condition>
+				<not>
+					<available file="${maven.repository}" type="dir" />
+				</not>
+			</condition>
+		</fail>
+		
+		<!-- 3) Create temporary copy of Eclipse target platform -->
+		<loadfile property="commons.target.content"
+				  srcfile="${commons.target}">
+			<filterchain>
+				<striplinebreaks />
+			</filterchain>
+		</loadfile>
+		
+		<!-- 4) Aggregate the information about the version -->
+		<loadresource property="commons.target.content.intermediate">
+			<propertyresource name="commons.target.content"/>
+			<filterchain>
+				<tokenfilter>
+					<replaceregex pattern="^.*sonarlint-java-client-osgi.{2}artifactId>\s*.{1}version>"
+								  replace=""
+								  flags="g" />
+				</tokenfilter>
+			</filterchain>
+		</loadresource>
+		
+		<loadresource property="sonarlint-java-client-osgi.version">
+			<propertyresource name="commons.target.content.intermediate"/>
+			<filterchain>
+				<tokenfilter>
+					<replaceregex pattern=".{2}version>.*$"
+								  replace=""
+								  flags="g" />
+				</tokenfilter>
+			</filterchain>
+		</loadresource>
+		
+		<!-- 5) Check that loaded version is actually a valid version -->
+		<fail message="Version from commons.target is incorrect: ${sonarlint-java-client-osgi.version}">
+			<condition>
+				<not>
+					<matches string="${sonarlint-java-client-osgi.version}"
+					         pattern="^(\d+[.]){1,3}\d+$" />
+				</not>
+			</condition>
+		</fail>
+		<echo message="SLCORE (Java client OSGi bundle) version: ${sonarlint-java-client-osgi.version}" />
+		
+		<!-- 6) Check if artifact repository information exists -->
+		<property name="_remote.repositories"
+				  value="${maven.repository}/${sonarlint-java-client-osgi.version}/_remote.repositories" />
+		
+		<fail message="Maven artifact repository information is missing at '${_remote.repositories}'!">
+			<condition>
+				<not>
+					<available file="${_remote.repositories}" />
+				</not>
+			</condition>
+		</fail>
+		
+		<!-- 7) Delete artifact repository information -->
+		<delete file="${_remote.repositories}" />
+	</target>
+</project>
