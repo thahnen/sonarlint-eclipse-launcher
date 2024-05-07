@@ -44,6 +44,19 @@ A local cask can be uninstalled via
 
 **INFO: Currently uninstalling these casks doesn't work correctly as the copied applications are not removed!**
 
+## Debugging Sloop in Production
+
+In order to debug Sloop we have to have SLCORE 10.x opened in *JetBrains IntelliJ Ultimate*. After that, the debug
+configurations for doing *Remote JVM Debugging* must be copied from `debug/runConfigurations` into
+`VCS/SonarSource/sonarlint-core/.idea/runConfigurations` before we can start. Then, Sloop in Production can be
+debugged properly. The following starter scripts exist:
+
+- `debug/eclipse-rcp.sh` corresponds to *Sloop in Eclipse RCP* / *Sloop_in_Eclipse_RCP.xml*
+- `debug/eclipse-php.sh` corresponds to *Sloop in Eclipse PHP* / *Sloop_in_Eclipse_PHP.xml*
+- `debug/eclipse-cpp.sh` corresponds to *Sloop in Eclipse CPP* / *Sloop_in_Eclipse_CPP.xml*
+- `debug/idz-16.0.4.sh` corresponds to *IBM IDz 16.0.4* / *IBM_IDz_16_0_4.xml*
+- `debug/sts-4.sh` corresponds to *Spring Tool Suite 4* / *Spring_Tool_Suite_4.xml*
+
 ## TODOs:
 
 There are still some things left to do:
