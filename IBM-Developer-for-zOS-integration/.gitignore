@@ -1,0 +1,12 @@
+### IntelliJ IDEA ###
+.idea/sonarlint.xml
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/sonarlint
+out/
+
+### Local storage ###
+lib/
+
+### Mac OS ###
+.DS_Store

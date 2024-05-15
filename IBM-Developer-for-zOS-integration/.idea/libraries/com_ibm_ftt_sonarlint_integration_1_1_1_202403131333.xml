@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="com.ibm.ftt.sonarlint.integration_1.1.1.202403131333">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/com.ibm.ftt.sonarlint.integration_1.1.1.202403131333.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

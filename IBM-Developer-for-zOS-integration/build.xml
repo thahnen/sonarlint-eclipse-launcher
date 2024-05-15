@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="IBM-Developer-for-zOS-integration" default="copyIntegrationPlugIn" xmlns:if="ant:if" xmlns:unless="ant:unless">
+  <description>
+    Project used for investigation of the IBM IDz integration plug-in into SonarLint for Eclipse
+  </description>
+
+  <!-- Used to copy the specific integration plug-in to local module -->
+  <property name="idz.version" value="16.0.4" />
+  <property name="integrationPlugIn.version" value="1.1.1.202403131333" />
+
+  <dirname property="scripts.dir" file="${ant.file}" />
+  <property name="integrationPlugIn.file"
+            value="/opt/idz-${idz.version}/plugins/com.ibm.ftt.sonarlint.integration_${integrationPlugIn.version}.jar" />
+  <property name="library.dir" value="${scripts.dir}/lib" />
+
+
+  <!--
+    After the library is copied, update or add a new entry for an external library in:
+      File > Project Structure... > Project Settings > Libraries
+  -->
+  <target name="copyIntegrationPlugIn" description="">
+    <mkdir dir="${library.dir}" />
+    <copy file="${integrationPlugIn.file}" toDir="${library.dir}" />
+  </target>
+</project>
