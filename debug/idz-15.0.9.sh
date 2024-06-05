@@ -1,4 +1,4 @@
 #!/bin/bash
 
 export SONARLINT_JVM_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,address=localhost:9009,suspend=y"
-/opt/eclipse-rcp/eclipse
+/opt/idz-16.0.9/developer_for_zos
