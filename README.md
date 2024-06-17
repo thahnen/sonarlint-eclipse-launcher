@@ -31,11 +31,10 @@ For easier testing, there are some [Homebrew casks](https://github.com/Homebrew/
 A local cask can be installed via
 > brew install --cask {local repository directory}/IBM-Developer-for-zOS/{formulae name with file suffix} --debug
 
-- *IDz1508.rb* for IBM IDz 15.0.8 (12.2023), the latest Java 8 based
+- *IDz1509.rb* for IBM IDz 15.0.9 (05.2024), the latest Java 8 based
   [General Availability](https://en.wikipedia.org/wiki/Software_release_life_cycle#General_availability_(GA))
-- *IDz1602.rb* for IBM IDz 16.0.2 (06.2023)
-- *IDz1603.rb* for IBM IDz 16.0.3 (10.2023)
-- *IDz1604.rb* for IBM IDz 16.0.4 (03.2024), the latest Java 11 based
+- *IDz1604.rb* for IBM IDz 16.0.4 (03.2024)
+- *IDz1605.rb* for IBM IDz 16.0.5 (06.2024), the latest Java 11 based
   [General Availability](https://en.wikipedia.org/wiki/Software_release_life_cycle#General_availability_(GA)) that
   should be sufficient when testing
 

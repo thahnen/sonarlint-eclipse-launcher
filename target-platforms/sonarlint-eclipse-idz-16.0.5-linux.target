@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
-<target name="sonarlint-eclipse-idz-16.0.2">
+<target name="sonarlint-eclipse-idz-16.0.5-linux">
 	<locations>
-		<location path="/Applications/IBM IDz 16.0.2.app/Contents/Eclipse" type="Profile"/>
+		<location path="/opt/idz-16.0.5" type="Profile"/>
 		<location type="Target" uri="file:${project_loc:/org.sonarlint.eclipse.its}/target-platforms/commons.target"/>
 		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<repository location="https://download.eclipse.org/releases/2022-03/"/>
@@ -16,7 +16,7 @@
 	</locations>
 	<targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
 	<environment>
-		<os>macosx</os>
-		<ws>cocoa</ws>
+		<os>linux</os>
+		<ws>gtk</ws>
 	</environment>
 </target>
