@@ -5,6 +5,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="com.ibm.ftt.sonarlint.integration_1.1.1.202403131333" level="project" />
+    <orderEntry type="library" name="com.ibm.ftt.sonarlint.integration" level="project" />
   </component>
 </module>

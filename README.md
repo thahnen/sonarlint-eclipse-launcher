@@ -54,6 +54,7 @@ start an application via one of the following scripts:
 - `debug/eclipse-cpp.sh` corresponds to *Sloop in Eclipse CPP*
 - `debug/idz-15.0.9.sh` corresponds to *IBM IDz 15.0.9*
 - `debug/idz-16.0.4.sh` corresponds to *IBM IDz 16.0.4*
+- `debug/idz-16.0.5.sh` corresponds to *IBM IDz 16.0.5*
 - `debug/sts-4.sh` corresponds to *Spring Tool Suite 4*
 
 After that, from within *JetBrains IntelliJ Ultimate*, we can attach to that specific process (always port 9009).

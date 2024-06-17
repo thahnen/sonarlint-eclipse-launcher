@@ -5,8 +5,8 @@
   </description>
 
   <!-- Used to copy the specific integration plug-in to local module -->
-  <property name="idz.version" value="16.0.4" />
-  <property name="integrationPlugIn.version" value="1.1.1.202403131333" />
+  <property name="idz.version" value="16.0.5" />
+  <property name="integrationPlugIn.version" value="1.1.2.202406112001" />
 
   <dirname property="scripts.dir" file="${ant.file}" />
   <property name="integrationPlugIn.file"
