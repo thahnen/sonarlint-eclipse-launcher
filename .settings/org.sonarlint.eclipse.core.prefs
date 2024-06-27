@@ -1,3 +1,5 @@
 autoEnabled=true
 bindingSuggestionsDisabled=true
 eclipse.preferences.version=1
+projectKey=thahnen_sonarlint-eclipse-launcher
+serverId=SonarCloud/thahnen
