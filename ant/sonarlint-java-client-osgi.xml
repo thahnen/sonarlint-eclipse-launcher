@@ -8,9 +8,9 @@
 	<!-- basic properties (inside and outside project directory) -->
 	<dirname property="current.dir" file="${ant.file}" />
 	<property name="commons.target.macOS"
-			  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons.target" />
+			  value="/Users/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons-build.target" />
 	<property name="commons.target.Linux"
-			  value="/home/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons.target" />
+			  value="/home/${user.name}/VCS/SonarSource/sonarlint-eclipse/target-platforms/commons-build.target" />
 	<property name="maven.repository.macOS"
 		  	  value="/Users/${user.name}/.m2/repository/org/sonarsource/sonarlint/core/sonarlint-java-client-osgi" />
 	<property name="maven.repository.Linux"

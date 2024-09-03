@@ -8,6 +8,10 @@
 		<project>org.sonarlint.eclipse.core.tests</project>
 		<project>org.sonarlint.eclipse.feature</project>
 		<project>org.sonarlint.eclipse.its</project>
+		<project>org.sonarlint.eclipse.its.connected.sc</project>
+		<project>org.sonarlint.eclipse.its.connected.sq</project>
+		<project>org.sonarlint.eclipse.its.shared</project>
+		<project>org.sonarlint.eclipse.its.standalone</project>
 		<project>org.sonarlint.eclipse.jdt</project>
 		<project>org.sonarlint.eclipse.m2e</project>
 		<project>org.sonarlint.eclipse.pydev</project>
