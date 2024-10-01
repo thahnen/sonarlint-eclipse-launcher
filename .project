@@ -14,7 +14,6 @@
 		<project>org.sonarlint.eclipse.its.standalone</project>
 		<project>org.sonarlint.eclipse.jdt</project>
 		<project>org.sonarlint.eclipse.m2e</project>
-		<project>org.sonarlint.eclipse.pydev</project>
 		<project>org.sonarlint.eclipse.site</project>
 		<project>org.sonarlint.eclipse.sloop.linux.aarch64</project>
 		<project>org.sonarlint.eclipse.sloop.linux.x64</project>
