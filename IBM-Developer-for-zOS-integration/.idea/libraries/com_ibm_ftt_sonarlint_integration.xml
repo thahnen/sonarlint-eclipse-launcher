@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/com.ibm.ftt.sonarlint.integration_1.1.1.202403131333.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/com.ibm.ftt.sonarlint.integration_1.1.2.202406112001.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/com.ibm.ftt.sonarlint.integration_2.0.0.202410162053.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

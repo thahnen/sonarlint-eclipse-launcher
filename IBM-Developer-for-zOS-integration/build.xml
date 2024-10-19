@@ -5,12 +5,12 @@
   </description>
 
   <!-- Used to copy the specific integration plug-in to local module -->
-  <property name="idz.version" value="16.0.5" />
-  <property name="integrationPlugIn.version" value="1.1.2.202406112001" />
+  <property name="idz.version" value="17.0.0" />
+  <property name="integrationPlugIn.version" value="2.0.0.202410162053" />
 
   <dirname property="scripts.dir" file="${ant.file}" />
   <property name="integrationPlugIn.file"
-            value="/opt/idz-${idz.version}/plugins/com.ibm.ftt.sonarlint.integration_${integrationPlugIn.version}.jar" />
+            value="/Applications/IBM IDz ${idz.version}.app/Contents/Eclipse/plugins/com.ibm.ftt.sonarlint.integration_${integrationPlugIn.version}.jar" />
   <property name="library.dir" value="${scripts.dir}/lib" />
 
 
