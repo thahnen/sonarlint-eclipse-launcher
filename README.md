@@ -52,12 +52,10 @@ In order to debug Sloop we have to have SLCORE 10.x opened in *JetBrains Intelli
 start an application via one of the following scripts:
 
 - `debug/eclipse-rcp.sh` corresponds to *Sloop in Eclipse RCP*
-- `debug/eclipse-php.sh` corresponds to *Sloop in Eclipse PHP*
 - `debug/eclipse-cpp.sh` corresponds to *Sloop in Eclipse CPP*
 - `debug/idz-15.0.9.sh` corresponds to *IBM IDz 15.0.9*
 - `debug/idz-16.0.5.sh` corresponds to *IBM IDz 16.0.5*
 - `debug/idz-17.0.0.sh` corresponds to *IBM IDz 17.0.0*
-- `debug/sts-4.sh` corresponds to *Spring Tool Suite 4*
 
 After that, from within *JetBrains IntelliJ Ultimate*, we can attach to that specific process (always port 9009).
 
